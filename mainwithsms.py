@@ -19,6 +19,8 @@ chem = ''
 today_date = str(date.today())
 day_of_week = calendar.day_name[date.today().weekday()]
 
+'''Change the contents of this dictionary (time table) accordingly.''' 
+
 class_times ={
     'Monday':[['09 30',bio],['10 30',maths],['11 30',eng],['12 30',chem],['14 10',phys]],
                'Tuesday':[['09 30',bio],['10 30',chem],['11 30',maths],['12 30',chem],['14 10',eng]],
