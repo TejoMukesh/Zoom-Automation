@@ -1,5 +1,5 @@
 # Zoom-Automation
-Bored of class? Use this simple script to to automate your meetings and learn shit along the way.
+Bored of class? Use this simple script to to automate your Zoom meetings, WITHOUT USING PYAUTOGUI, and without installing additional Python packages.
 
 Unlike most other zoom automations, this one works by using the webbrowser module in Python. This eliminates the need for pyautogui, and the default packages installed with Python are sufficient.
 You'll have to tweak the script for it to work without hiccups.
