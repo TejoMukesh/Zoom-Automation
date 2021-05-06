@@ -32,7 +32,7 @@ bio ='link'
 
 chem = 'link'
 
-The words 'eng','maths' etc. are in reference to the subject of the class. The corresponding link is the Zoom invite link(this means that there is no need to type a password).Make sure the link starts with something like https://us04web.zoom.us/j/123456789/pwd=1 (notice that it says pwd after the last /). Change the subject names according to your needs and add the corresponding link without forgetting the double quotations (or apostrophes, both have the same effect) on both sides of the link(like the previous example).
+The words 'eng','maths' etc. are in reference to the subject of the class. The corresponding link is the Zoom invite link(this means that there is no need to type a password).Make sure the link starts with something like https://us04web.zoom.us/j/123456789/pwd=1 (notice that it says pwd after the last slash{'/'}). Change the subject names according to your needs and add the corresponding link without forgetting the double quotations (or apostrophes, both have the same effect) on both sides of the link(like the previous example).
 
 Next is a dictionary with the name 'class_times' which is essentially the time table of your classes. Corresponding to each day is a list of class timings and subjects. Change timings and subjects accordingly. Keep the syntax in mind. If an error shows up, leave a question here.
 
