@@ -4,10 +4,10 @@ Bored of class? Use this simple script to to automate your Zoom meetings, WITHOU
 Unlike most other zoom automations, this one works by using the webbrowser module in Python. This eliminates the need for pyautogui, and the default packages installed with Python are sufficient.
 You'll have to tweak the script for it to work without hiccups.
 
-Zoom setup:
- The 'Turn off my video during a meeting' setting should be set to on.
- The 'Mute my audio when joining a meeting' setting should be set to on.
- The 'Automatically join audio by computer when joining a meeting' setting should be set to on.
+Zoom setup- these settings should be set to on:
+ 'Turn off my video during a meeting' 
+ 'Mute my audio when joining a meeting' 
+ 'Automatically join audio by computer when joining a meeting' 
   
 Desktop setup:
  If you're using a laptop, plug it in to avoid the laptop turning off midway.
