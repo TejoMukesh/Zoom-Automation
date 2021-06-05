@@ -5,9 +5,9 @@ Unlike most other zoom automations, this one works by using the webbrowser modul
 You'll have to tweak the script for it to work without hiccups.
 
 Zoom setup- these settings should be set to on:
- 'Turn off my video during a meeting' 
- 'Mute my audio when joining a meeting' 
- 'Automatically join audio by computer when joining a meeting' 
+'Turn off my video during a meeting' 
+'Mute my audio when joining a meeting' 
+'Automatically join audio by computer when joining a meeting' 
   
 Desktop setup:
  If you're using a laptop, plug it in to avoid the laptop turning off midway.
