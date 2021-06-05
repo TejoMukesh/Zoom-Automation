@@ -20,7 +20,7 @@ Code setup:
  Familiarity with Python or any experience with coding will help.
  Python needs to be installed in your computer. This won't be a problem if you're using a Mac. On Linux distros, make sure to use Python 3.x and not Python 2. If using Windows, install IDLE from https://www.python.org/downloads/windows/.
  
-{Code from the main script}
+{Configuring Code from the main script}
 
 eng =   'https://us04web.zoom.us/j/123456789/pwd=1?'
 
