@@ -36,7 +36,7 @@ def attend():
     if day_of_week in class_times.keys():
                 
         for i in class_times[day_of_week]:
-            if time.strptime(f'{today_date} {class_times[day_of_week][class_no][0]}','%Y-%m-%d %H %M') > time.localtime():
+            if time.strptime(f'{today_date} {i[0]}','%Y-%m-%d %H %M') > time.localtime():
                 x.enterabs((time.mktime(time.strptime(f'{today_date} {i[0]}',"%Y-%m-%d %H %M"))),0,webbrowser,kwargs={'url':i[1]})
                 #to rejoin after 40 mins
                 x.enterabs((time.mktime(time.strptime(f'{today_date} {get_new_time(i[0])}',"%Y-%m-%d %H %M"))),0,webbrowser,kwargs={'url':i[1]})
