@@ -1,8 +1,5 @@
 from datetime import date
-import webbrowser
-import calendar
-import sched
-import time
+import webbrowser, calendar, sched, time
 
 eng =   'https://us04web.zoom.us/j/123456789'
 maths = 'link'
