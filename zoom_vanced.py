@@ -52,31 +52,37 @@ def zoom_class(link):
         'uncomment this line'
         #message = client.messages.create(to = my_cell, from_ =my_twilio, body = my_msg )
         
-def get_new_time(old_time, add):
-    added_minutes=int(old_time[3:]) + add
-    if added_minutes >= 60:
-        new_time = str(str(int(old_time[:2]) + 1) + ' ' + str(added_minutes - 60))
-    else:
-        new_time = str(old_time[:2]) + ' ' + str(added_minutes)
+def second(old_time, add):
+    sec = time.mktime(old_time) + (add*60)
+    return datetime.fromtimestamp(sec)
 
-    return new_time
-    
-    
 def attend():
-    if day_of_week in class_times.keys():
-        class_no = 0 #this is for the loop
-        
-        for i in class_times[day_of_week]:
-            if time.strptime(f'{today_date} {class_times[day_of_week][class_no][0]}','%Y-%m-%d %H %M') > time.localtime():
-                x.enterabs((time.mktime(time.strptime(f'{today_date} {class_times[day_of_week][class_no][0]}',"%Y-%m-%d %H %M"))),0,zoom_class,kwargs={'link':class_times[day_of_week][class_no][1]})
-                #to rejoin after 40 mins
-                #x.enterabs((time.mktime(time.strptime(f'{today_date} {get_new_time(class_times[day_of_week][class_no][0])}',"%Y-%m-%d %H %M"))),0,zoom_class,kwargs={'link':class_times[day_of_week][class_no][1]})
-                class_no +=1        
-            else:
-                class_no +=1
+        late = True
+        if day_of_week in class_times.keys():            
+                for i in class_times[day_of_week]:                        
+                        timing_str = time.strptime(f'{today_date} {i[0]}','%Y-%m-%d %H %M')
+                        second_timing = time.strptime(f'{second(timing_str,add=i[1][1])}',"%Y-%m-%d %H:%M:%S")
+                                                
+                        if timing_str > time.localtime() and i[1] not in cancel:
+                                x.enterabs((time.mktime(timing_str)),0,zoom_class,kwargs={'link':i[1][0]})
+                                #to rejoin for second sess
+                                x.enterabs((time.mktime(second_timing)),0,zoom_class,kwargs={'link':i[1][0]})
+
+                        elif timing_str < time.localtime() and i[1] not in cancel and late:
+                            if time.mktime(time.localtime()) - time.mktime(timing_str) < (12*60):
+                                webbrowser.open(i[1][0])
+                                x.enterabs((time.mktime(second_timing)),0,zoom_class,kwargs={'link':i[1][0]})
+                                
+                            elif second_timing > time.localtime():
+                                x.enterabs((time.mktime(second_timing)),0,zoom_class,kwargs={'link':i[1][0]})
+                                
+                            else:
+                                pass
+                      
+                        else:
+                                pass
                 
-        x.run()
-        print("No more classes today!")
+                x.run()
                 
     else:
         print("NO CLASS FOR TODAY.")
