@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 import webbrowser
 import calendar, sched
 import time
@@ -80,7 +80,7 @@ def attend():
                                 pass
                       
                         else:
-                                pass
+                            pass
                 
                 x.run()
                 
