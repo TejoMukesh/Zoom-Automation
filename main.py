@@ -1,4 +1,4 @@
-from datetime import *
+from datetime import date
 import webbrowser
 import calendar
 import sched
@@ -10,9 +10,6 @@ phys = 'link'
 bio ='link'
 chem = 'link'
 
-today_date = str(date.today())
-day_of_week = calendar.day_name[date.today().weekday()]
-
 class_times ={
     'Monday':[['09 30',bio],['10 30',maths],['11 30',eng],['12 30',chem],['14 10',phys]],
                'Tuesday':[],
@@ -22,11 +19,10 @@ class_times ={
     'Saturday':[]
     }
 
+today_date = str(date.today())
+day_of_week = calendar.day_name[date.today().weekday()]
 x= sched.scheduler(time.time,time.sleep)
 
-def zoom_class(link):
-        webbrowser.open(link)
-        
 def get_new_time(old_time):
     added_minutes=int(old_time[3:]) + 40
     if added_minutes >= 60:
@@ -35,20 +31,18 @@ def get_new_time(old_time):
         new_time = str(old_time[:2]) + ' ' + str(added_minutes)
 
     return new_time
-
     
 def attend():
     if day_of_week in class_times.keys():
-        class_no = 0 #this is for the loop
-        
+                
         for i in class_times[day_of_week]:
             if time.strptime(f'{today_date} {class_times[day_of_week][class_no][0]}','%Y-%m-%d %H %M') > time.localtime():
-                x.enterabs((time.mktime(time.strptime(f'{today_date} {class_times[day_of_week][class_no][0]}',"%Y-%m-%d %H %M"))),0,zoom_class,kwargs={'link':class_times[day_of_week][class_no][1]})
+                x.enterabs((time.mktime(time.strptime(f'{today_date} {i[0]}',"%Y-%m-%d %H %M"))),0,webbrowser,kwargs={'url':i[1]})
                 #to rejoin after 40 mins
-                #x.enterabs((time.mktime(time.strptime(f'{today_date} {get_new_time(class_times[day_of_week][class_no][0])}',"%Y-%m-%d %H %M"))),0,zoom_class,kwargs={'link':class_times[day_of_week][class_no][1]})
-                class_no +=1        
+                x.enterabs((time.mktime(time.strptime(f'{today_date} {get_new_time(i[0])}',"%Y-%m-%d %H %M"))),0,webbrowser,kwargs={'url':i[1]})
+                pass  
             else:
-                class_no +=1
+                pass
                 
         x.run()
         print("No more classes today!")
